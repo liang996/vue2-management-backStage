@@ -46,10 +46,10 @@
             alt=""
             class="All"
           />
-          <span slot="title">栏位2</span>
+          <span slot="title">天气管理</span>
         </template>
         <el-menu-item @click="$router.push({ name: 'list3' })" index="2-1"
-          >列表3</el-menu-item
+          >天气管理</el-menu-item
         >
       </el-submenu>
     </el-menu>

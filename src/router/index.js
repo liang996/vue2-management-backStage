@@ -61,8 +61,8 @@ const router = new Router({
       component: resulte => require(['@/components/list3/list3'], resulte),
       meta: {
         needLogin: true,
-        title: '列表3',
-        designation: "列表3"
+        title: '天气管理',
+        designation: "天气管理"
       },
 
     },

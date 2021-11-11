@@ -23,6 +23,37 @@
               clearable
             ></el-input>
           </div>
+
+          <div class="demo-input-suffix">
+            <el-upload
+              style="position:absolute;"
+              action="/上传文件的接口"
+              :on-change="onChange"
+              :auto-upload="false"
+              :show-file-list="false"
+              accept=".xls, .xlsx"
+            >
+              <el-button type="warning" size="medium" icon="el-icon-folder-add"
+                >导入</el-button
+              >
+            </el-upload>
+            <el-button size="medium" type="primary" style="margin-left:130px;">
+              <download-excel
+                :data="tableData"
+                :fields="json_fields"
+                name="用户账号表.xls"
+              >
+                导出</download-excel
+              >
+            </el-button>
+            <el-button
+              type="primary"
+              size="medium"
+              @click="copy(name)"
+              class="copy tag"
+              >复制搜索框名称</el-button
+            >
+          </div>
         </div>
       </div>
       <!-- 列表列表-->
@@ -90,9 +121,19 @@
 </template>
 
 <script>
+import Clipboard from "clipboard";
+import { v4 as uuidv4 } from "uuid";
+
 export default {
   data() {
     return {
+      json_fields: {
+        //导出Excel表格的表头设置
+        编号: "id",
+        姓名: "name",
+        性别: "sex",
+        电话: "phone"
+      },
       url: "",
       name: "",
       pageIndex: 1,
@@ -103,7 +144,6 @@ export default {
       msg: "",
       total: 0,
       tableData: [],
-      treeData: [],
       name: ""
     };
   },
@@ -111,6 +151,94 @@ export default {
     this.DetailByPage();
   },
   methods: {
+    //----------以下为导入Excel数据功能--------------
+    // 文件选择回调
+    onChange(file, fileList) {
+      console.log("fileList,,,,,,,,,,,", fileList);
+      this.fileData = file; // 保存当前选择文件
+      this.readExcel(); // 调用读取数据的方法
+    },
+    // 读取数据
+    readExcel(e) {
+      let that = this;
+      const files = that.fileData;
+      if (!files) {
+        //如果没有文件
+        return false;
+      } else if (!/.(xls|xlsx)$/.test(files.name.toLowerCase())) {
+        this.$message.error("上传格式不正确，请上传xls或者xlsx格式");
+        return false;
+      }
+      const fileReader = new FileReader();
+      fileReader.onload = ev => {
+        try {
+          const data = ev.target.result;
+          // console.log(data)
+          const workbook = this.XLSX.read(data, {
+            type: "binary"
+          });
+          console.log(workbook.SheetNames);
+          if (workbook.SheetNames.length >= 1) {
+            this.$message({
+              message: "导入数据表格成功",
+              showClose: true,
+              type: "success"
+            });
+          }
+          const wsname = workbook.SheetNames[0]; //取第一张表
+          const ws = this.XLSX.utils.sheet_to_json(workbook.Sheets[wsname]); //生成json表格内容
+
+          that.outputs = []; //清空接收数据
+          that.studentlist = []; //清空接收数据
+          var data2 = [];
+          ws.map((value, index, arry) => {
+            console.log("value,,,,,,", value);
+            console.log("index,,,,,,", index);
+            console.log("index,,,,,,", ws[index]["姓名"]);
+            // 键名为绑定 el 表格的关键字，值则是 ws[i][对应表头名]
+
+            data2.push({
+              id: uuidv4(),
+              url: "https://wangchujiang.com/dev-site/icons/coffeescript.svg",
+
+              name: ws[index]["姓名"],
+              sex: ws[index]["性别"],
+              phone: ws[index]["电话"]
+            });
+          });
+          console.log("data2,,,,,,", data2);
+
+          this.tableData = this.tableData.concat(data2);
+          console.log("data2,,,,,,", data2);
+          console.log("that.tableData,,,,,,", this.tableData);
+
+          this.$refs.upload.value = "";
+        } catch (e) {
+          return false;
+        }
+      };
+      // 如果为原生 input 则应是 files[0]
+      fileReader.readAsBinaryString(files.raw);
+    },
+
+    copy(data) {
+      // 员工编号复制
+      let clipboard = new Clipboard(".tag", {
+        text: function() {
+          return data;
+        }
+      });
+      clipboard.on("success", e => {
+        this.$message({
+          message: "复制成功",
+          showClose: true,
+          type: "success"
+        });
+        // 释放内存
+        clipboard.destroy();
+      });
+    },
+
     isSeachName(val) {
       if (val !== "") {
         this.tableData = this.tableData.filter(i => i.name == val);

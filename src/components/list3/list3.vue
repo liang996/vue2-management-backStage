@@ -2,12 +2,12 @@
   <div>
     <div class="herdertop">
       <el-breadcrumb separator="/">
-        <el-breadcrumb-item>列表3</el-breadcrumb-item>
-        <el-breadcrumb-item>列表3</el-breadcrumb-item>
+        <el-breadcrumb-item>天气管理</el-breadcrumb-item>
+        <el-breadcrumb-item>天气管理</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
     <div class="center">
-      <div class="hander">列表3</div>
+      <div class="hander">天气管理</div>
       <div class="entirety">
         <div class="search">
           <!--  状态搜索信息 -->

@@ -5,11 +5,16 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import App from './App'
 import http from './api/http'
-
+import JsonExcel from 'vue-json-excel'
+import XLSX from 'xlsx'
 import router from './router'
 Vue.use(ElementUI)
 Vue.config.productionTip = false
 Vue.prototype.$http = http;
+Vue.prototype.XLSX = XLSX
+
+Vue.component('downloadExcel', JsonExcel)
+
 
 //引入侧边栏组件
 import layout from "./layout/layout.vue" //引入头部组件
