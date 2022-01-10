@@ -23,11 +23,13 @@
     "moment": "^2.29.1",
     "qs": "^6.10.1",
     "quill": "^1.3.7",
+    "quill-image-extend-module": "^1.1.2",
     "save": "^2.4.0",
     "uuid": "^8.3.2",
     "vue": "^2.5.2",
     "vue-amap": "^0.5.10",
     "vue-json-excel": "^0.3.0",
+    "vue-quill-editor": "^3.0.6",
     "vue-router": "^3.0.1",
     "xlsx": "^0.17.3"
   },

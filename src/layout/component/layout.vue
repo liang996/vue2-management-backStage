@@ -52,6 +52,32 @@
           >天气管理</el-menu-item
         >
       </el-submenu>
+      <el-submenu index="3">
+        <template slot="title">
+          <img
+            src="https://himg.bdimg.com/sys/portrait/item/public.1.f1519725.tx1F2O9yP-hyQtgWMyBOig.jpg"
+            alt=""
+            class="All"
+          />
+          <span slot="title">富文本编辑器1</span>
+        </template>
+        <el-menu-item @click="$router.push({ name: 'list4' })" index="3-1"
+          >富文本编辑器1</el-menu-item
+        >
+      </el-submenu>
+      <el-submenu index="4">
+        <template slot="title">
+          <img
+            src="https://himg.bdimg.com/sys/portrait/item/public.1.f1519725.tx1F2O9yP-hyQtgWMyBOig.jpg"
+            alt=""
+            class="All"
+          />
+          <span slot="title">富文本编辑器2</span>
+        </template>
+        <el-menu-item @click="$router.push({ name: 'list5' })" index="4-1"
+          >富文本编辑器2</el-menu-item
+        >
+      </el-submenu>
     </el-menu>
   </div>
 </template>

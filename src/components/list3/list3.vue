@@ -95,8 +95,8 @@
 export default {
   data() {
     return {
-      location: "北京",
-      id: "101010100",
+      location: "上海",
+      id: "101020100",
       dayly: [],
 
       tableData: [
