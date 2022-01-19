@@ -6,11 +6,11 @@
       href="javascript:;"
     >
       <img
-        src="https://himg.bdimg.com/sys/portrait/item/public.1.f1519725.tx1F2O9yP-hyQtgWMyBOig.jpg"
+        src="https://s3.bmp.ovh/imgs/2022/01/6983d7164013bb13.png"
         alt=""
         class="logo"
       />
-      vue后台模版
+      点靓生活
     </div>
     <el-menu
       default-active="1"
@@ -25,12 +25,12 @@
       <!-- 服务商品管理 -->
       <el-submenu index="1">
         <template slot="title">
-          <img
+          <!-- <img
             src="https://himg.bdimg.com/sys/portrait/item/public.1.f1519725.tx1F2O9yP-hyQtgWMyBOig.jpg"
             alt=""
             class="All"
-          />
-          <span slot="title">栏位1</span>
+          /> -->
+          <span slot="title">列表管理</span>
         </template>
         <el-menu-item @click="$router.push({ name: 'list1' })" index="1-1"
           >列表1</el-menu-item
@@ -41,11 +41,11 @@
       </el-submenu>
       <el-submenu index="2">
         <template slot="title">
-          <img
+          <!-- <img
             src="https://himg.bdimg.com/sys/portrait/item/public.1.f1519725.tx1F2O9yP-hyQtgWMyBOig.jpg"
             alt=""
             class="All"
-          />
+          /> -->
           <span slot="title">天气管理</span>
         </template>
         <el-menu-item @click="$router.push({ name: 'list3' })" index="2-1"
@@ -54,11 +54,11 @@
       </el-submenu>
       <el-submenu index="3">
         <template slot="title">
-          <img
+          <!-- <img
             src="https://himg.bdimg.com/sys/portrait/item/public.1.f1519725.tx1F2O9yP-hyQtgWMyBOig.jpg"
             alt=""
             class="All"
-          />
+          /> -->
           <span slot="title">富文本编辑器1</span>
         </template>
         <el-menu-item @click="$router.push({ name: 'list4' })" index="3-1"
@@ -67,11 +67,11 @@
       </el-submenu>
       <el-submenu index="4">
         <template slot="title">
-          <img
+          <!-- <img
             src="https://himg.bdimg.com/sys/portrait/item/public.1.f1519725.tx1F2O9yP-hyQtgWMyBOig.jpg"
             alt=""
             class="All"
-          />
+          /> -->
           <span slot="title">富文本编辑器2</span>
         </template>
         <el-menu-item @click="$router.push({ name: 'list5' })" index="4-1"
@@ -144,9 +144,9 @@
 }
 
 .logo {
-  width: 30px;
+  width: 45px;
 
-  height: 30px;
+  height: 45px;
 
   margin-right: 10px;
 }

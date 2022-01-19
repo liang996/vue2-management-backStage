@@ -1,33 +1,39 @@
 <template>
-  <div class="login">
-    <header class="login-header">
-      <img
-        src="https://himg.bdimg.com/sys/portrait/item/public.1.f1519725.tx1F2O9yP-hyQtgWMyBOig.jpg"
-        alt="logo"
-        style="borderRadius: '25px'"
-      />
-      <h1>VUE后台管理模版</h1>
-    </header>
-    <div class="login-content">
-      <h2>用户登陆</h2>
-      <el-form ref="form" :model="form" label-width="60px">
-        <el-form-item label="用户名">
+  <div class="site-page--login">
+    <div class="iconStyle">
+      <header class="login-header">
+        <img
+          src="https://s3.bmp.ovh/imgs/2022/01/6983d7164013bb13.png"
+          alt="logo"
+          style="borderRadius: '25px'"
+        />
+        <h2>点靓生活管理平台</h2>
+      </header>
+    </div>
+
+    <div class="login-main">
+      <h3 class="login-title">登录</h3>
+      <el-form ref="form" :model="form" :rules="rules2">
+        <el-form-item prop="userName">
           <el-input
             v-model="form.username"
-            style="color: rgba(0,0,0,.25)"
+            @keyup.enter.native="onSubmit"
+            placeholder="帐号"
           ></el-input>
         </el-form-item>
-        <el-form-item label="密码">
+        <el-form-item prop="password">
           <el-input
             v-model="form.password"
+            @keyup.enter.native="onSubmit"
             type="password"
-            style="color: rgba(0,0,0,.25)"
+            placeholder="密码"
           ></el-input>
         </el-form-item>
-        <el-form-item style="width:100%;">
+
+        <el-form-item>
           <el-button
-            type="primary"
-            style="width:100%;"
+            class="login-btn-submit"
+            style="background-color:#fd804c;color: #fff;"
             @click="onSubmit"
             :loading="logining"
             >登录</el-button
@@ -84,54 +90,77 @@ export default {
   }
 };
 </script>
-<style scoped lang="scss">
-.content {
-  top: 0 !important;
-  padding-left: 0 !important;
-  overflow-y: hidden !important;
-}
-.login {
-  width: 100%;
-  height: 100%;
-  background-image: url("../../assets/bg.jpg");
-  background-size: 100% 100%;
+<style lang="scss" scoped>
+.site-page--login {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  height: auto;
+  width: auto;
+  background-color: #fff;
+  // background-color: #f8f8f8;
 
-  .login-header {
-    display: flex;
-    align-items: center;
-    height: 80px;
-    background-color: rgba(21, 20, 13, 0.5);
-    img {
-      width: 40px;
-      height: 40px;
-      margin: 0 15px 0 50px;
-    }
+  &:before {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 26%;
+    height: 100%;
+    content: "";
+    // background-image: url("https://cdn.web-global.fds.api.mi-img.com/mcfe--mi-account/static/static/media/banner.4994397e.jpg");
 
-    h1 {
-      display: inline-block;
-      font-size: 32px;
-      color: #fff;
-      padding-top: 10px;
-    }
+    background-image: url("https://gimg2.baidu.com/image_search/src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20170907%2F0d07ef491a9d4816abe9055600c57f62.gif&refer=http%3A%2F%2F5b0988e595225.cdn.sohucs.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1645149048&t=6d4ff200eb761cc8eecade77bd74f331");
+    background-size: cover;
   }
 
-  .login-content {
-    width: 300px;
-    height: 280px;
-    background-color: #fff;
-    margin: 50px auto;
-    padding: 20px 40px;
-    h2 {
-      text-align: center;
-      font-size: 28px;
-      font-weight: bold;
-      margin-bottom: 28px;
-    }
-    .login-form {
-      .login-form-button {
-        width: 100%;
+  .iconStyle {
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    .login-header {
+      display: flex;
+      align-items: center;
+      height: 80px;
+      img {
+        width: 45px;
+        height: 45px;
+        margin: 0 15px 0 50px;
+      }
+
+      h3 {
+        display: inline-block;
+        color: #333;
+        padding-top: 5px;
       }
     }
+  }
+  .login-main {
+    position: absolute;
+    left: 50%;
+    padding: 70px 36px;
+    width: 348px;
+    top: 60%;
+    border-radius: 4px;
+    margin-top: -249px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+
+    background-color: #fff;
+    box-shadow: 1px 1px 16px rgba(0, 0, 0, 0.06);
+  }
+  .login-title {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  .login-btn-submit {
+    width: 100%;
+    margin-top: 18px;
+    border-style: none;
   }
 }
 </style>
