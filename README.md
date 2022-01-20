@@ -1,6 +1,6 @@
 # About
 
-此项目是 vue + element-ui 构建的后台管理系统，具有登陆、列表展示、查询真实天气接口,导入导出，复制,富文本等功能。
+此项目是 vue + element-ui 构建的后台管理系统，具有登陆、列表展示、查询真实天气接口,导入导出，复制,富文本,百度地图地图选点等功能。
 
 # 说明
 
@@ -116,6 +116,83 @@ Vue.use(VueQuillEditor);
 <quill-editor ref="myTextEditor" v-model="content" :options="editorOption"
 style="height: 600px; margin-bottom: 10px"></quill-editor>
 ```
+
+## 在 data 中绑定值
+
+```js
+export default {
+  data() {
+    return {
+      //富文本内容
+      content: "",
+      editorOption: {}
+    };
+  }
+};
+```
+
+这样就实现了富文本编辑器！
+
+## 技术栈
+
+vue2 + less + element-ui+vuex + vue-router + webpack + ES6/7
+
+## 项目运行
+
+```
+git clone https://github.com/liang996/vue2-management-backStage
+
+  
+
+cd vue2-management-backStage
+
+npm install 或 yarn(推荐)
+
+npm run dev   运行
+
+npm run  build  打包
+
+
+访问: http://localhost:8080
+
+```
+
+# 百度地图实现
+
+## 安装 vue-baidu-map 组件
+
+`npm i vue-baidu-map`
+
+## 使用
+
+在 main.js 中引入
+
+```js
+//main.js
+import Vue from "vue";
+
+import BaiduMap from "vue-baidu-map";
+
+Vue.use(BaiduMap, {
+  ak: "" //  在此输入你自己的百度地图ak
+});
+```
+
+## 在 main.js 中引入
+
+`import './plugins/VueQuillEditor.js'`
+
+## 使用
+
+在具体 vue 文件中引用
+
+```js
+<baidu-map />
+```
+
+## 百度地图 key 获取
+
+[百度地图 key 获取参考说明](https://lbsyun.baidu.com/index.php?title=jspopular3.0/guide/getkey)
 
 ## 在 data 中绑定值
 

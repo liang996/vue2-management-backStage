@@ -198,7 +198,7 @@ export default {
 
     DetailByPage() {
       this.$http({
-        url: `/v2/city/lookup`,
+        url: `/v2/v2/city/lookup`,
         method: "GET",
         params: {
           location: this.location,

@@ -34,13 +34,26 @@ module.exports = {
         assetsPublicPath: '/',
         proxyTable: {
 
-            '/api': {
+            '/api/v2': {
                 secure: true, // 如果是 https ,需要开启这个选项
 
                 target: 'https://geoapi.qweather.com/', //目标接口域名接口地址
                 changeOrigin: true, //是否跨域
                 pathRewrite: {
-                    '^/api': '/' //重写接口 后台接口指向不统一  所以指向所有/
+                    '^/api/v2': '/' //重写接口 后台接口指向不统一  所以指向所有/
+                        // 等价于    /api + /api  ==  https://geoapi.qweather.com/api
+                        // 如果写为 '^/api' : '/'
+                        // 等价于   /api + /  == https://geoapi.qweather.com/
+                        // 这里的 /api ==  https://geoapi.qweather.com/
+                }
+            },
+            '/api/place': {
+                secure: true, // 如果是 https ,需要开启这个选项
+
+                target: 'https://api.map.baidu.com/', //目标接口域名接口地址
+                changeOrigin: true, //是否跨域
+                pathRewrite: {
+                    '^/api/place': '/' //重写接口 后台接口指向不统一  所以指向所有/
                         // 等价于    /api + /api  ==  https://geoapi.qweather.com/api
                         // 如果写为 '^/api' : '/'
                         // 等价于   /api + /  == https://geoapi.qweather.com/

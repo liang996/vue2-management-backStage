@@ -78,6 +78,19 @@
           >富文本编辑器2</el-menu-item
         >
       </el-submenu>
+      <el-submenu index="5">
+        <template slot="title">
+          <!-- <img
+            src="https://himg.bdimg.com/sys/portrait/item/public.1.f1519725.tx1F2O9yP-hyQtgWMyBOig.jpg"
+            alt=""
+            class="All"
+          /> -->
+          <span slot="title">地图管理</span>
+        </template>
+        <el-menu-item @click="$router.push({ name: 'list6' })" index="5-1"
+          >百度地图</el-menu-item
+        >
+      </el-submenu>
     </el-menu>
   </div>
 </template>

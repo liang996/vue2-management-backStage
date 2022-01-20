@@ -79,6 +79,7 @@ export default {
               "Bearer.eyJzdGFyX2xpZmUiOnsiYWNjb3VudE5vbkV4cGlyZWQiOnRydWUsImFjY291bnROb25Mb2NrZWQiOnRydWUsImF1dGhvcml0aWVzIjpbXSwiY3JlZGVudGlhbHNOb25FeHBpcmVkIjp0cnVlLCJlbmFibGVkIjp0cnVlLCJleHAiOjI1OTIwMDAwMDAsImlhdCI6MTYzNDA4NzA5NzI1NSwianRpIjpudWxsLCJwYXNzd29yZCI6bnVsbCwic3ViIjoiYWRtaW4iLCJ1c2VySW5mbyI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiJ9LCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzdGFyX2xpZmVfand0Iiwic3Rhcl9saWZlX2NsYWltcyI6ImFkbWluIiwiZXhwIjoxNjM2Njc5MDk3LCJpYXQiOjE2MzQwODcwOTd9.B_s29YcSJUmXdBVkc7pHIZrmGlpPDht7qU9Aq8CNdDA"
             );
             this.$message.success("登入成功");
+
             this.$router.push({ path: "/list1" });
           } else {
             this.logining = false;

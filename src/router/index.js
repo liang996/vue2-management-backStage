@@ -75,7 +75,7 @@ const router = new Router({
                 designation: "富文本1"
             },
 
-        }, ,
+        },
         {
             path: '/list5',
             name: 'list5',
@@ -86,8 +86,31 @@ const router = new Router({
                 designation: "富文本2"
             },
 
-        }
+        },
+        {
+            path: '/list6',
+            name: 'list6',
+            component: resulte => require(['@/components/list6/list6'], resulte),
+            meta: {
+                needLogin: true,
+                title: '百度地图',
+                designation: "百度地图"
+            },
 
+        },
+
+
+        {
+            path: '/map',
+            name: 'map',
+            component: resulte => require(['@/components/list6/map'], resulte),
+            meta: {
+                needLogin: true,
+                title: '百度地图',
+                designation: "百度地图"
+            },
+
+        }
 
     ]
 })

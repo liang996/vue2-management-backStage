@@ -8,6 +8,13 @@ import http from './api/http'
 import JsonExcel from 'vue-json-excel'
 import XLSX from 'xlsx'
 import router from './router'
+
+
+import BaiduMap from "vue-baidu-map";
+
+Vue.use(BaiduMap, {
+    ak: "1sTGWsKucqpIauM2Y0fUaceGWM6unUkU"
+});
 Vue.use(ElementUI)
 Vue.config.productionTip = false
 Vue.prototype.$http = http;
@@ -19,36 +26,36 @@ Vue.component('downloadExcel', JsonExcel)
 //引入侧边栏组件
 import layout from "./layout/layout.vue" //引入头部组件
 router.beforeEach((to, from, next) => {
-  /* 路由发生变化修改页面title */
-  if (to.meta.title) {
-    document.title = to.meta.title
-    if (to.meta.title != '登录') {
-      Vue.component("lay-out", layout);
-      console.log(Vue.component("lay-out", layout))
+    /* 路由发生变化修改页面title */
+    if (to.meta.title) {
+        document.title = to.meta.title
+        if (to.meta.title != '登录') {
+            Vue.component("lay-out", layout);
+            console.log(Vue.component("lay-out", layout))
 
-    } else {
-      Vue.component("lay-out",);
-      console.log(Vue.component("lay-out", 'undefined'))
+        } else {
+            Vue.component("lay-out", );
+            console.log(Vue.component("lay-out", 'undefined'))
+        }
     }
-  }
-  console.log(to.meta.title)
-  // 非登录页无token拦截
-  const token = localStorage.getItem('key') || ''
-  if (!token && to.name !== 'login') {
-    window.location.href = "/#/login"
-    next()
-  } else {
-    next()
-  }
+    console.log(to.meta.title)
+        // 非登录页无token拦截
+    const token = localStorage.getItem('key') || ''
+    if (!token && to.name !== 'login') {
+        window.location.href = "/#/login"
+        next()
+    } else {
+        next()
+    }
 })
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
-  router,
-  render: h => h(App),
-  components: {
-    App
-  },
-  template: '<App/>'
+    el: '#app',
+    router,
+    render: h => h(App),
+    components: {
+        App
+    },
+    template: '<App/>'
 })
